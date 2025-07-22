@@ -1,0 +1,141 @@
+/* frontend/src/index.css */
+
+
+html, body, #root {
+  height: 100%; /* Ensure they take up all available height from parents */
+  min-height: 100vh; /* Make them at least the full viewport height */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+body {
+  display: flex; /* Use flexbox to ensure #root fills the body */
+  flex-direction: column;
+}
+
+#root {
+  flex-grow: 1; /* Allow #root to grow and fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
+/* You might already have other styles, keep them if they are not conflicting */
+
+/* frontend/src/index.css (or a new theme.css file imported here) */
+
+/* Basic reset and full-height setup (from previous discussion) */
+html, body, #root {
+  height: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* Default theme variables */
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8f9fa;
+  --text-color: #212529;
+  --border-color: #dee2e6;
+  --header-bg: #f8f9fa;
+  --footer-bg: #f8f9fa;
+  --card-bg: #ffffff;
+
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Dark theme styles applied when body has 'dark-mode' class */
+body.dark-mode { /* <-- CHANGE THIS LINE: from .dark-theme to .dark-mode */
+  --primary-bg: #212529;
+  --secondary-bg: #343a40;
+  --text-color: #f8f9fa;
+  --border-color: #495057;
+  --header-bg: #343a40;
+  --footer-bg: #343a40;
+  --card-bg: #495057;
+}
+
+/* Apply variables to common elements */
+body {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+}
+
+.navbar {
+  background-color: var(--header-bg) !important; /* Use !important if Bootstrap overrides */
+  color: var(--text-color) !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: var(--text-color) !important;
+}
+
+/* .footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+} */
+
+.card {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.card-title, .card-text {
+  color: var(--text-color) !important;
+}
+
+/* Add more specific rules for elements that need to change color/background */
+h1, h2, h3, h4, h5, h6, p, label {
+  color: var(--text-color);
+}
+
+/* Example for buttons if they don't change automatically with Bootstrap classes */
+.btn-primary {
+  background-color: var(--primary-color-dark-mode-example, #007bff); /* Example if you have a primary color variable */
+  border-color: var(--primary-color-dark-mode-example, #007bff);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color-dark-mode-hover-example, #0056b3);
+  border-color: var(--primary-color-dark-mode-hover-example, #0056b3);
+}
+
+/* You might need to adjust Bootstrap's default styles for specific components */
+/* For example, if you have specific background on Container or Row */
+.container, .row, .col {
+    background-color: inherit; /* Inherit from body to get the theme background */
+}
+
+/* Ensure form controls also adapt */
+.form-control {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+.form-control::placeholder {
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+
+/* In frontend/src/index.css or global.css */
+
+.footer {
+  background-color: var(--footer-bg); /* Picks up light or dark background */
+  color: var(--text-color); /* Picks up light or dark text color */
+  padding: 20px 0; /* Example padding, adjust as needed */
+  /* Add any other default footer styles here */
+}
+
+/* Ensure your dark-theme body class also defines --footer-bg and --text-color */
+body.dark-mode {
+  --footer-bg: #343a40; /* Example dark mode footer background */
+  --text-color: #f8f9fa; /* Example dark mode text color */
+  /* ... other dark mode variables ... */
+}

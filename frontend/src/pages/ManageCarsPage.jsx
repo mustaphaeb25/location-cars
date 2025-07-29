@@ -6,6 +6,7 @@ import Modal from '../components/Modal';
 import { getCars, addCar, updateCar, deleteCar } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { translateStatus } from '../utils/statusTranslator';
 
 const ManageCarsPage = () => {
   const { isAdmin, loading: authLoading } = useAuth();
@@ -138,7 +139,7 @@ const ManageCarsPage = () => {
               <th>Brand</th>
               <th>Model</th>
               <th>Price/Day</th>
-              <th>Status</th>
+              <th>Status</th> {/* Correct order */}
               <th>Actions</th>
             </tr>
           </thead>
@@ -148,15 +149,19 @@ const ManageCarsPage = () => {
                 <td>{car.id}</td>
                 <td>
                   <Image
-                    src={car.image_url ? `http://localhost:3000/uploads/${car.image_url}` : 'https://via.placeholder.com/50'}
+                    src={car.image_url ? `http://localhost:3000${car.image_url}` : 'https://via.placeholder.com/50'}
                     thumbnail
                     style={{ width: '50px', height: '50px', objectFit: 'cover' }}
                   />
                 </td>
-                <td>{car.marque}</td>
-                <td>{car.modele}</td>
-                <td>${car.prix_par_jour}</td>
-                <td><span className={`badge ${car.statut === 'disponible' ? 'bg-success' : car.statut === 'louee' ? 'bg-warning text-dark' : 'bg-danger'}`}>{car.statut}</span></td>
+                <td>{car.marque}</td> {/* Correct position for Brand */}
+                <td>{car.modele}</td> {/* Correct position for Model */}
+                <td>${car.prix_par_jour}</td> {/* Correct position for Price/Day */}
+                <td> {/* Correct position for Status with translated badge */}
+                  <span className={`badge ${car.statut === 'disponible' ? 'bg-success' : car.statut === 'louee' ? 'bg-warning text-dark' : (car.statut === 'réservée' || car.statut === 'en maintenance') ? 'bg-danger' : 'bg-secondary'}`}>
+                    {translateStatus(car.statut)}
+                  </span>
+                </td>
                 <td>
                   <Button variant="warning" size="sm" className="me-2" onClick={() => handleEditCarClick(car)}>
                     Edit

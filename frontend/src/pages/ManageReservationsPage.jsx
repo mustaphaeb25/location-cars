@@ -105,6 +105,7 @@ const ManageReservationsPage = () => {
               <option value="en attente">Pending</option>
               <option value="validée">Approved</option>
               <option value="refusée">Rejected</option>
+              <option value="annulée">Cancelled</option>
             </Form.Select>
           </Form.Group>
         </Col>

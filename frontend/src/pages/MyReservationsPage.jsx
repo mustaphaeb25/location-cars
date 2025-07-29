@@ -1,30 +1,41 @@
+
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Alert, Card } from 'react-bootstrap';
+import { Container, Row, Col, Alert } from 'react-bootstrap';
 import ReservationCard from '../components/ReservationCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import Modal from '../components/Modal';
-import { getReservations, updateReservationStatus, getCars } from '../services/api'; // getCars needed to fetch car details
+import { getReservations, updateReservationStatus, getCars } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 
 const MyReservationsPage = () => {
+  console.log("MyReservationsPage: TOP OF COMPONENT RENDER");
+
   const { user, loading: authLoading, isAuthenticated } = useAuth();
   const [reservations, setReservations] = useState([]);
-  const [cars, setCars] = useState({}); // To store car details mapped by ID
+  const [cars, setCars] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [reservationToCancel, setReservationToCancel] = useState(null);
   const [cancelMessage, setCancelMessage] = useState('');
 
+  console.log("MyReservationsPage: Component Rendered");
+  console.log("    - user:", user);
+  console.log("    - isAuthenticated:", isAuthenticated);
+  console.log("    - authLoading:", authLoading);
+
   const fetchUserReservations = async () => {
-    if (!user || !user.id) return;
+    if (!user || !user.id) {
+      setLoading(false);
+      return;
+    }
 
     try {
       setLoading(true);
       setError(null);
       setCancelMessage('');
 
-      // Fetch all cars first to map them to reservations
+      // 1. Fetch cars
       const carsResponse = await getCars();
       const carsMap = carsResponse.data.reduce((acc, car) => {
         acc[car.id] = car;
@@ -32,28 +43,43 @@ const MyReservationsPage = () => {
       }, {});
       setCars(carsMap);
 
-      // Fetch all reservations (backend doesn't have a user-specific endpoint)
-      const reservationsResponse = await getReservations();
-      // Filter client-side based on user ID
-      const userReservations = reservationsResponse.data.filter(
-        (res) => res.id_utilisateur === user.id
-      );
-      setReservations(userReservations);
+      // 2. Fetch reservations
+      const reservationsResponse = await getReservations(user.id);
+      
+      if (reservationsResponse.data && Array.isArray(reservationsResponse.data)) {
+        setReservations(reservationsResponse.data);
+      } else {
+        setReservations([]);
+      }
     } catch (err) {
-      console.error("Error fetching reservations or cars:", err);
-      setError("Failed to load your reservations. Please try again.");
+      console.error("Error fetching data:", err);
+      if (err.response?.status === 404) {
+        setReservations([]);
+        setError("You have no reservations yet.");
+      } else {
+        setError("Failed to load reservations. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    if (!authLoading && isAuthenticated) {
+    console.log("MyReservationsPage useEffect:", { authLoading, isAuthenticated, user });
+    if (!authLoading && isAuthenticated && user?.id) {
       fetchUserReservations();
     } else if (!authLoading && !isAuthenticated) {
+      console.log("MyReservationsPage useEffect: Not authenticated, setting loading to false.");
       setLoading(false);
-      setError("You must be logged in to view your reservations.");
+      setReservations([]);
+       setError(null);
     }
+    if (!user) {
+  console.warn("No user object yet");
+} else if (!user.id) {
+  console.warn("User object exists but missing ID");
+}
+
   }, [authLoading, isAuthenticated, user]);
 
   const handleCancelClick = (reservation) => {
@@ -65,24 +91,34 @@ const MyReservationsPage = () => {
     if (!reservationToCancel) return;
 
     try {
-      await updateReservationStatus(reservationToCancel.id, 'refusée'); // Or 'annulée' if backend supports it
+      const reservationId = reservationToCancel.id;
+      console.log("Cancelling reservation ID:", reservationId);
+      await updateReservationStatus(reservationId, 'annulée');
+
       setCancelMessage('Reservation cancelled successfully!');
-      fetchUserReservations(); // Re-fetch reservations to update status
+      fetchUserReservations();
     } catch (err) {
       setCancelMessage('Failed to cancel reservation. Please try again.');
       console.error("Error cancelling reservation:", err);
     } finally {
       setShowCancelModal(false);
       setReservationToCancel(null);
-      setTimeout(() => setCancelMessage(''), 3000); // Clear message after 3 seconds
+      setTimeout(() => setCancelMessage(''), 3000);
     }
   };
 
   if (loading || authLoading) {
-    return <LoadingSpinner />;
+    console.log("MyReservationsPage: Showing LoadingSpinner.");
+    return (
+      <Container className="my-5 text-center">
+        <LoadingSpinner />
+        <p>Loading reservations...</p>
+      </Container>
+    );
   }
 
   if (error) {
+    console.log("MyReservationsPage: Showing Error Alert:", error);
     return (
       <Container className="my-5">
         <Alert variant="danger" className="text-center">{error}</Alert>
@@ -91,6 +127,7 @@ const MyReservationsPage = () => {
   }
 
   if (reservations.length === 0) {
+    console.log("MyReservationsPage: Showing No Reservations Alert.");
     return (
       <Container className="my-5">
         <Alert variant="info" className="text-center">You have no reservations yet.</Alert>
@@ -98,10 +135,15 @@ const MyReservationsPage = () => {
     );
   }
 
+  console.log("MyReservationsPage: Rendering Reservations.");
   return (
     <Container className="my-5">
       <h1 className="text-center mb-4">My Reservations</h1>
-      {cancelMessage && <Alert variant={cancelMessage.includes('successfully') ? 'success' : 'danger'}>{cancelMessage}</Alert>}
+      {cancelMessage && (
+        <Alert variant={cancelMessage.includes('successfully') ? 'success' : 'danger'}>
+          {cancelMessage}
+        </Alert>
+      )}
       <Row xs={1} md={2} lg={3} className="g-4">
         {reservations.map((reservation) => (
           <Col key={reservation.id}>
@@ -109,7 +151,7 @@ const MyReservationsPage = () => {
               reservation={reservation}
               carDetails={cars[reservation.id_voiture]}
               onDeleteReservation={handleCancelClick}
-              isAdminView={false} // Ensure client view
+              isAdminView={false}
             />
           </Col>
         ))}
@@ -122,10 +164,10 @@ const MyReservationsPage = () => {
         confirmText="Yes, Cancel"
         onConfirm={confirmCancel}
       >
-        <p>Are you sure you want to cancel this reservation for{' '}
+        <p>
+          Are you sure you want to cancel this reservation for{' '}
           <strong>{cars[reservationToCancel?.id_voiture]?.marque} {cars[reservationToCancel?.id_voiture]?.modele}</strong>?
         </p>
-        <p className="text-danger">This action cannot be undone.</p>
       </Modal>
     </Container>
   );

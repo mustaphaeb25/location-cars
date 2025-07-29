@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
 import ToggleButton from './ToggleButton';
 import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
-import logo from '../assets/logo.jpeg';
+import './Navbar.css';
 
 const Navbar = () => {
   const { isAuthenticated, isAdmin, logout } = useAuth();
@@ -18,43 +18,81 @@ const Navbar = () => {
   };
 
   return (
-    <BootstrapNavbar expand="lg" className={darkMode ? 'bg-dark navbar-dark' : 'bg-light navbar-light'} sticky="top">
-      <Container>
-        <BootstrapNavbar.Brand as={Link} to="/"><img src={logo} alt="Logo" height="30" />LuxDrive</BootstrapNavbar.Brand>
-        <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+    <BootstrapNavbar expand="lg" className={`luxdrive-navbar ${darkMode ? 'dark-mode' : 'light-mode'}`} sticky="top">
+      <Container fluid="xxl">
+        <BootstrapNavbar.Brand as={Link} to="/" className="navbar-brand">
+          <span className="brand-text">LuxDrive</span>
+        </BootstrapNavbar.Brand>
+
+        <BootstrapNavbar.Toggle
+          aria-controls="basic-navbar-nav"
+          className="navbar-toggler"
+          aria-label="Toggle navigation"
+        />
+
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/cars">Cars</Nav.Link>
-            <Nav.Link as={Link} to="/contact">Contact Us</Nav.Link>
+            <Nav.Link as={Link} to="/" className="nav-link" activeClassName="active" exact>Home</Nav.Link>
+            <Nav.Link as={Link} to="/cars" className="nav-link" activeClassName="active">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/about" className="nav-link" activeClassName="active">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/faqs" className="nav-link" activeClassName="active">FAQs</Nav.Link>
+            {/* <Nav.Link as={Link} to="/blog" className="nav-link" activeClassName="active">Blog</Nav.Link> */}
+            <Nav.Link as={Link} to="/contact" className="nav-link" activeClassName="active">Contact Us</Nav.Link>
             {isAuthenticated && (
-              <Nav.Link as={Link} to="/my-reservations">My Reservations</Nav.Link>
+              <Nav.Link as={Link} to="/my-reservations" className="nav-link" activeClassName="active">My Reservations</Nav.Link>
             )}
             {isAdmin && (
-              <Nav.Link as={Link} to="/admin">Admin Dashboard</Nav.Link>
+              <Nav.Link as={Link} to="/admin" className="nav-link" activeClassName="active">Admin Dashboard</Nav.Link>
             )}
           </Nav>
-          <Nav>
-            <Nav.Item className="d-flex align-items-center me-3">
-              {darkMode ? <MdOutlineDarkMode size={20} className="me-2" /> : <MdOutlineLightMode size={20} className="me-2" />}
-              <ToggleButton
-                label={darkMode ? "Dark Mode" : "Light Mode"}
-                checked={darkMode}
-                onChange={toggleTheme}
-              />
-            </Nav.Item>
-            {isAuthenticated ? (
-              <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
+
+
+            
+          <div className="theme-toggle d-flex align-items-center">
+            {darkMode ? (
+              <MdOutlineDarkMode size={20} className="theme-icon me-2" />
             ) : (
-              <>
-                <Button as={Link} to="/login" variant="outline-primary" className="me-2">Login</Button>
-                <Button as={Link} to="/register" variant="primary">Register</Button>
-              </>
+              <MdOutlineLightMode size={20} className="theme-icon me-2" />
             )}
-          </Nav>
-        </BootstrapNavbar.Collapse>
-      </Container>
-    </BootstrapNavbar>
+            <ToggleButton
+              label={darkMode ? "Dark Mode" : "Light Mode"}
+              checked={darkMode}
+              onChange={toggleTheme}
+              aria-label={`Toggle ${darkMode ? "light" : "dark"} mode`}
+            />
+          </div>
+          {isAuthenticated ? (
+            <Button
+              variant="outline-danger"
+              onClick={handleLogout}
+              className="logout-btn ms-2"
+            >
+              Logout
+            </Button>
+          ) : (
+            <div className="auth-buttons d-flex ms-3">
+              <Button
+                as={Link}
+                to="/login"
+                variant="outline-primary"
+                className="login-btn"
+              >
+                Login
+              </Button>
+              <Button
+                as={Link}
+                to="/register"
+                variant="primary"
+                className="register-btn ms-2"
+              >
+                Register
+              </Button>
+            </div>
+          )}
+       
+      </BootstrapNavbar.Collapse>
+    </Container>
+    </BootstrapNavbar >
   );
 };
 

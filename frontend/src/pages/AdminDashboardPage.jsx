@@ -3,7 +3,8 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { useAuth } from '../contexts/AuthContext';
-import { FaCar, FaClipboardList, FaChartLine } from 'react-icons/fa';
+import { FaCar, FaClipboardList, FaChartLine, FaEnvelope } from 'react-icons/fa';
+
 
 const AdminDashboardPage = () => {
   const { user, isAuthenticated, isAdmin, loading: authLoading } = useAuth();
@@ -21,8 +22,9 @@ const AdminDashboardPage = () => {
   return (
     <Container className="my-5 fade-in">
       <h1 className="text-center mb-4">Admin Dashboard</h1>
-      <p className="text-center text-muted">Welcome, {user?.nom|| user?.email}!</p>
-
+      <p className="text-center text-muted">
+        Welcome, {user ? `${user.nom} (${user.email})` : 'Guest'}!
+      </p>
       <Row xs={1} md={2} lg={3} className="g-4 mt-4">
         <Col>
           <Card className="h-100 shadow-sm hover-grow text-center">
@@ -44,7 +46,17 @@ const AdminDashboardPage = () => {
             </Card.Body>
           </Card>
         </Col>
-        
+        <Col>
+          <Card className="h-100 shadow-sm hover-grow text-center">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <FaEnvelope size={60} className="text-warning mb-3" />
+              <Card.Title className="h4">Contact Messages</Card.Title>
+              <Card.Text>Review inquiries from your contact form.</Card.Text>
+              <Button as={Link} to="/admin/messages" variant="warning" className="mt-auto">View Messages</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+
         <Col>
           <Card className="h-100 shadow-sm hover-grow text-center">
             <Card.Body className="d-flex flex-column justify-content-center align-items-center">
@@ -55,9 +67,9 @@ const AdminDashboardPage = () => {
             </Card.Body>
           </Card>
         </Col>
-        
+
       </Row>
-      
+
     </Container>
   );
 };

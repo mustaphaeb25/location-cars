@@ -1,0 +1,246 @@
+/* Contact Messages Page Styles */
+.contact-messages-page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.contact-messages-page.dark-mode {
+  background: #121212;
+}
+
+.page-header {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.page-header:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #3a7bd5 0%, #00d2ff 100%);
+  border-radius: 2px;
+}
+
+.page-title {
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-mode .page-title {
+  color: #e2e8f0;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.dark-mode .page-subtitle {
+  color: #a0aec0;
+}
+
+.back-to-dashboard-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid #dee2e6;
+}
+
+.dark-mode .back-to-dashboard-btn {
+  border-color: #4b5563;
+  color: #e2e8f0;
+}
+
+.back-to-dashboard-btn:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-2px);
+}
+
+.dark-mode .back-to-dashboard-btn:hover {
+  background-color: #1e293b;
+}
+
+.messages-container {
+  margin-top: 2rem;
+}
+
+.messages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.message-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-mode .message-card {
+  background: #1e293b;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.message-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .message-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.message-sender {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-right: 1rem;
+}
+
+.dark-mode .message-sender {
+  color: #e2e8f0;
+}
+
+.sender-name {
+  margin-right: 0.5rem;
+}
+
+.message-date {
+  display: flex;
+  align-items: center;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.dark-mode .message-date {
+  color: #a0aec0;
+}
+
+.message-subject {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .message-subject {
+  color: #e2e8f0;
+}
+
+.message-content {
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.dark-mode .message-content {
+  color: #a0aec0;
+}
+
+.message-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.no-messages-card {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.dark-mode .no-messages-card {
+  background: #1e293b;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+.animate__fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding-bottom: 1rem;
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .messages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .message-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .message-date {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .page-title {
+    font-size: 1.6rem;
+  }
+  
+  .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .no-messages-card {
+    padding: 2rem;
+  }
+}

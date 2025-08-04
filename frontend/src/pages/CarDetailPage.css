@@ -1,0 +1,311 @@
+/* Car Detail Page Styles */
+.car-detail-page {
+  --primary-color: #4361ee;
+  --primary-hover: #3a56d4;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --card-bg: #ffffff;
+  --card-border: #e9ecef;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --transition: all 0.3s ease;
+}
+
+.car-detail-page.dark-mode {
+  --card-bg: #2d2d42;
+  --card-border: #3d3d5a;
+  --text-color: #f8f9fa;
+  --text-muted: #adb5bd;
+  --light-color: #1a1a2e;
+}
+
+/* Back Button */
+.back-button {
+  transition: var(--transition);
+  border-width: 2px;
+}
+
+.back-button:hover {
+  transform: translateX(-3px);
+}
+
+/* Car Gallery */
+.car-gallery {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.main-image-container {
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.main-image:hover {
+  transform: scale(1.02);
+}
+
+.thumbnail-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.thumbnail:hover {
+  opacity: 1;
+}
+
+.thumbnail.active {
+  opacity: 1;
+  border-color: var(--primary-color);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Car Details */
+.car-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.car-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.status-badge {
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price-display {
+  display: flex;
+  align-items: baseline;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.price-label {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-left: 5px;
+}
+
+.car-description {
+  color: var(--text-color);
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* Features Section */
+.features-section {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--card-border);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(67, 97, 238, 0.1);
+  color: var(--text-color);
+}
+
+.feature-icon {
+  color: var(--primary-color);
+}
+
+/* Booking Card */
+.booking-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--card-border);
+  position: sticky;
+  top: 20px;
+}
+
+.booking-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.auth-alert {
+  margin-bottom: 1.5rem;
+}
+
+.date-pickers {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.form-control {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--card-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+}
+
+.price-summary {
+  background-color: rgba(67, 97, 238, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  color: var(--text-color);
+}
+
+.price-row.total {
+  font-weight: 600;
+  border-top: 1px solid var(--card-border);
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+.reserve-btn {
+  padding: 0.75rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+
+.reserve-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+}
+
+/* Confirmation Modal */
+.confirmation-content {
+  text-align: center;
+}
+
+.confirmation-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.confirmation-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.confirmation-details {
+  background-color: rgba(67, 97, 238, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.confirmation-details p {
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.confirmation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .main-image-container {
+    height: 350px;
+  }
+  
+  .car-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-image-container {
+    height: 300px;
+  }
+  
+  .booking-card {
+    margin-top: 2rem;
+  }
+  
+  .confirmation-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .confirmation-actions .btn {
+    width: 100%;
+  }
+}

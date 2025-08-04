@@ -1,47 +1,115 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Card, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { translateStatus } from '../utils/statusTranslator';
+import { FaCar, FaGasPump, FaCogs, FaUserFriends } from 'react-icons/fa';
+import { useTheme } from '../contexts/ThemeContext';
 
 const CarCard = ({ car, showActions = true, isAdminView = false, onDelete, onEdit }) => {
-  const imageUrl = car.image_url ? `http://localhost:3000/uploads/${car.image_url}` : 'https://via.placeholder.com/150?text=No+Image';
+  const { darkMode } = useTheme();
+  const imageUrl = car.image_url ? `http://localhost:3000${car.image_url}` : 'https://via.placeholder.com/300x200?text=No+Image';
+  
+  // Only show "New Arrival" for cars added in the last 30 days
+  const isNewArrival = () => {
+    if (!car.created_at) return false;
+    const carDate = new Date(car.created_at);
+    const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+    return carDate > thirtyDaysAgo;
+  };
 
   return (
-    <Card className="h-100 shadow-sm hover-grow fade-in">
-      <Card.Img variant="top" src={imageUrl} alt={car.modele} style={{ height: '200px', objectFit: 'cover' }} />
-      <Card.Body className="d-flex flex-column">
-        <Card.Title>{car.marque} {car.modele}</Card.Title>
-        <Card.Text className="mb-1">
-          <strong>Price per day:</strong> ${car.prix_par_jour}
-        </Card.Text>
-        <Card.Text className="mb-2">
-          <strong>Status:</strong> <span className={`badge ${car.statut === 'disponible' ? 'bg-success' : 'bg-danger'}`}>{car.statut}</span>
-        </Card.Text>
-        <Card.Text className="text-muted flex-grow-1">
-          {car.description?.substring(0, 100)}...
-        </Card.Text>
-        {showActions && (
-          <div className="mt-auto d-flex justify-content-between">
-            <Button as={Link} to={`/cars/${car.id}`} variant="outline-primary" className="me-2">
-              View Details
-            </Button>
-            {!isAdminView && car.statut === 'disponible' && (
-              <Button as={Link} to={`/cars/${car.id}`} variant="primary">
-                Book Now
-              </Button>
-            )}
-            {isAdminView && (
-              <>
-                <Button variant="warning" size="sm" className="me-2" onClick={() => onEdit(car)}>
-                  Edit
-                </Button>
-                <Button variant="danger" size="sm" onClick={() => onDelete(car.id)}>
-                  Delete
-                </Button>
-              </>
-            )}
+    <Card className={`car-card ${darkMode ? 'dark-mode' : ''}`}>
+      <div className="card-image-wrapper">
+        <Card.Img variant="top" src={imageUrl} alt={`${car.marque} ${car.modele}`} />
+        <div className="card-badges">
+          
+          <Badge 
+            bg={car.statut === 'disponible' ? 'success' : 
+                car.statut === 'réservée' ? 'warning' : 
+                'danger'}
+            className="status-badge"
+          >
+            {translateStatus(car.statut)}
+          </Badge>
+        </div>
+        <div className="price-overlay">
+          <span className="price">${car.prix_par_jour}</span>
+          <span className="price-label">/day</span>
+        </div>
+      </div>
+      
+      <Card.Body>
+        <Card.Title className="car-title">
+          {car.marque} {car.modele} <span className="car-year">{car.annee}</span>
+        </Card.Title>
+        
+        <div className="car-specs">
+          <div className="spec-item">
+            <FaCar className="spec-icon" />
+            <span>{car.type_vehicule}</span>
           </div>
+          <div className="spec-item">
+            <FaGasPump className="spec-icon" />
+            <span>{car.type_carburant}</span>
+          </div>
+          <div className="spec-item">
+            <FaCogs className="spec-icon" />
+            <span>{car.boite_vitesse}</span>
+          </div>
+          <div className="spec-item">
+            <FaUserFriends className="spec-icon" />
+            <span>{car.nombre_places} seats</span>
+          </div>
+        </div>
+        
+        {car.description && (
+          <Card.Text className="car-description">
+            {car.description.substring(0, 100)}{car.description.length > 100 ? '...' : ''}
+          </Card.Text>
         )}
       </Card.Body>
+      
+      <Card.Footer className="card-footer">
+        <div className="d-flex justify-content-between">
+          <Button 
+            as={Link} 
+            to={`/cars/${car.id}`} 
+            variant="outline-primary" 
+            className="details-btn"
+          >
+            Details
+          </Button>
+          {!isAdminView && car.statut === 'disponible' && (
+            <Button 
+              as={Link} 
+              to={`/cars/${car.id}`} 
+              variant="primary" 
+              className="book-btn"
+            >
+              Book Now
+            </Button>
+          )}
+          {isAdminView && (
+            <>
+              <Button 
+                variant="outline-warning" 
+                size="sm" 
+                onClick={() => onEdit(car)}
+                className="me-2"
+              >
+                Edit
+              </Button>
+              <Button 
+                variant="outline-danger" 
+                size="sm" 
+                onClick={() => onDelete(car.id)}
+              >
+                Delete
+              </Button>
+            </>
+          )}
+        </div>
+      </Card.Footer>
     </Card>
   );
 };

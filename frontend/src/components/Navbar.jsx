@@ -103,10 +103,15 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Navbar as BootstrapNavbar, Nav, Container, Button, Dropdown } from 'react-bootstrap';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
+<<<<<<< HEAD
 import { MdOutlineLightMode, MdOutlineDarkMode, MdAccountCircle, MdDirectionsCar, MdHelpOutline, MdContacts, MdHome } from 'react-icons/md';
 import { FiLogOut, FiLogIn, FiUserPlus } from 'react-icons/fi';
 import { RiAdminLine } from 'react-icons/ri';
 import { BsCalendarCheck } from 'react-icons/bs';
+=======
+import ToggleButton from './ToggleButton';
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 import './Navbar.css';
 
 const Navbar = () => {
@@ -128,6 +133,7 @@ const Navbar = () => {
     <BootstrapNavbar expand="lg" className={`luxdrive-navbar ${darkMode ? 'dark-mode' : 'light-mode'}`} sticky="top">
       <Container fluid="xxl">
         <BootstrapNavbar.Brand as={Link} to="/" className="navbar-brand">
+<<<<<<< HEAD
           <span className="brand-logo">
             <MdDirectionsCar className="logo-icon" />
             <span className="brand-text">LuxDrive</span>
@@ -261,6 +267,80 @@ const Navbar = () => {
         </BootstrapNavbar.Collapse>
       </Container>
     </BootstrapNavbar>
+=======
+          <span className="brand-text">LuxDrive</span>
+        </BootstrapNavbar.Brand>
+
+        <BootstrapNavbar.Toggle
+          aria-controls="basic-navbar-nav"
+          className="navbar-toggler"
+          aria-label="Toggle navigation"
+        />
+
+        <BootstrapNavbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/" className="nav-link" activeClassName="active" exact>Home</Nav.Link>
+            <Nav.Link as={Link} to="/cars" className="nav-link" activeClassName="active">Cars</Nav.Link>
+            <Nav.Link as={Link} to="/about" className="nav-link" activeClassName="active">About Us</Nav.Link>
+            <Nav.Link as={Link} to="/faqs" className="nav-link" activeClassName="active">FAQs</Nav.Link>
+            {/* <Nav.Link as={Link} to="/blog" className="nav-link" activeClassName="active">Blog</Nav.Link> */}
+            <Nav.Link as={Link} to="/contact" className="nav-link" activeClassName="active">Contact Us</Nav.Link>
+            {isAuthenticated && (
+              <Nav.Link as={Link} to="/my-reservations" className="nav-link" activeClassName="active">My Reservations</Nav.Link>
+            )}
+            {isAdmin && (
+              <Nav.Link as={Link} to="/admin" className="nav-link" activeClassName="active">Admin Dashboard</Nav.Link>
+            )}
+          </Nav>
+
+
+            
+          <div className="theme-toggle d-flex align-items-center">
+            {darkMode ? (
+              <MdOutlineDarkMode size={20} className="theme-icon me-2" />
+            ) : (
+              <MdOutlineLightMode size={20} className="theme-icon me-2" />
+            )}
+            <ToggleButton
+              label={darkMode ? "Dark Mode" : "Light Mode"}
+              checked={darkMode}
+              onChange={toggleTheme}
+              aria-label={`Toggle ${darkMode ? "light" : "dark"} mode`}
+            />
+          </div>
+          {isAuthenticated ? (
+            <Button
+              variant="outline-danger"
+              onClick={handleLogout}
+              className="logout-btn ms-2"
+            >
+              Logout
+            </Button>
+          ) : (
+            <div className="auth-buttons d-flex ms-3">
+              <Button
+                as={Link}
+                to="/login"
+                variant="outline-primary"
+                className="login-btn"
+              >
+                Login
+              </Button>
+              <Button
+                as={Link}
+                to="/register"
+                variant="primary"
+                className="register-btn ms-2"
+              >
+                Register
+              </Button>
+            </div>
+          )}
+       
+      </BootstrapNavbar.Collapse>
+    </Container>
+    </BootstrapNavbar >
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
   );
 };
 

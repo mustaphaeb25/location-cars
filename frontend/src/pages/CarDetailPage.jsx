@@ -609,6 +609,7 @@
 // export default CarDetailPage;
 
 
+<<<<<<< HEAD
 // import React, { useEffect, useState } from 'react';
 // import { useParams, useNavigate } from 'react-router-dom';
 // import { Container, Row, Col, Button, Alert, Badge } from 'react-bootstrap';
@@ -967,6 +968,8 @@
 // };
 
 // export default CarDetailPage;
+=======
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Row, Col, Button, Alert, Badge } from 'react-bootstrap';

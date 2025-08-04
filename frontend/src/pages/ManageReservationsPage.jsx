@@ -273,6 +273,7 @@ const ManageReservationsPage = () => {
           </Button>
         </div>
 
+<<<<<<< HEAD
         <div className="page-header text-center mb-5">
           <h1 className="page-title">
             <FaCalendarAlt className="me-2" />
@@ -280,6 +281,22 @@ const ManageReservationsPage = () => {
           </h1>
           <p className="page-subtitle">Review and manage booking requests</p>
         </div>
+=======
+      <Row className="mb-4">
+        <Col md={4}>
+          <Form.Group controlId="statusFilter">
+            <Form.Label>Filter by Status:</Form.Label>
+            <Form.Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+              <option value="">All Statuses</option>
+              <option value="en attente">Pending</option>
+              <option value="validée">Approved</option>
+              <option value="refusée">Rejected</option>
+              <option value="annulée">Cancelled</option>
+            </Form.Select>
+          </Form.Group>
+        </Col>
+      </Row>
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
         {updateMessage && (
           <Alert variant={updateMessage.includes('successfully') ? 'success' : 'danger'} className="animate__fadeIn">

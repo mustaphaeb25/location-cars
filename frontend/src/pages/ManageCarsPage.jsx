@@ -496,10 +496,14 @@ import Modal from '../components/Modal';
 import { getCars, addCar, updateCar, deleteCar } from '../services/api';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { useTheme } from '../contexts/ThemeContext';
 import { translateStatus } from '../utils/statusTranslator';
 import { FaArrowLeft, FaPlus, FaEdit, FaTrash, FaCar } from 'react-icons/fa';
 import './ManageCarsPage.css';
+=======
+import { translateStatus } from '../utils/statusTranslator';
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
 const ManageCarsPage = () => {
   const { isAdmin, loading: authLoading } = useAuth();
@@ -636,11 +640,61 @@ const ManageCarsPage = () => {
           <p className="page-subtitle">Add, edit, or delete vehicles in your fleet</p>
         </div>
 
+<<<<<<< HEAD
         {error && (
           <Alert variant="danger" className="text-center my-4">
             {error}
           </Alert>
         )}
+=======
+      {cars.length === 0 ? (
+        <Alert variant="info" className="text-center">No cars found. Add a new car to get started.</Alert>
+      ) : (
+        <Table striped bordered hover responsive className="shadow-sm">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Image</th>
+              <th>Brand</th>
+              <th>Model</th>
+              <th>Price/Day</th>
+              <th>Status</th> {/* Correct order */}
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {cars.map((car) => (
+              <tr key={car.id}>
+                <td>{car.id}</td>
+                <td>
+                  <Image
+                    src={car.image_url ? `http://localhost:3000${car.image_url}` : 'https://via.placeholder.com/50'}
+                    thumbnail
+                    style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                  />
+                </td>
+                <td>{car.marque}</td> {/* Correct position for Brand */}
+                <td>{car.modele}</td> {/* Correct position for Model */}
+                <td>${car.prix_par_jour}</td> {/* Correct position for Price/Day */}
+                <td> {/* Correct position for Status with translated badge */}
+                  <span className={`badge ${car.statut === 'disponible' ? 'bg-success' : car.statut === 'louee' ? 'bg-warning text-dark' : (car.statut === 'réservée' || car.statut === 'en maintenance') ? 'bg-danger' : 'bg-secondary'}`}>
+                    {translateStatus(car.statut)}
+                  </span>
+                </td>
+                <td>
+                  <Button variant="warning" size="sm" className="me-2" onClick={() => handleEditCarClick(car)}>
+                    Edit
+                  </Button>
+                  <Button variant="danger" size="sm" onClick={() => handleDeleteClick(car.id)}>
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      )}
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
         {formSuccess && (
           <Alert variant="success" className="animate__fadeIn">

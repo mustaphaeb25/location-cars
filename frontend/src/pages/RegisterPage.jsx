@@ -54,6 +54,7 @@
 // export default RegisterPage;
 
 
+<<<<<<< HEAD
 // import React, { useState } from 'react';
 
 // import AuthForms from '../components/AuthForms';
@@ -144,6 +145,8 @@
 
 // export default RegisterPage;
 
+=======
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 import React, { useState } from 'react';
 
 import AuthForms from '../components/AuthForms';
@@ -151,7 +154,11 @@ import { useAuth } from '../contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 import { FaUserPlus, FaArrowLeft } from 'react-icons/fa';
+<<<<<<< HEAD
 import { Container, Row, Col, Card, Button, Alert } from 'react-bootstrap'; // Corrected: Added Alert import
+=======
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
 
 const RegisterPage = () => {
@@ -184,14 +191,24 @@ const RegisterPage = () => {
       <Container className="py-5">
         <Row className="justify-content-center">
           <Col md={8} lg={6} xl={5}>
+<<<<<<< HEAD
             <Button
               variant="outline-secondary"
               onClick={() => navigate(-1)}
+=======
+            <Button 
+              variant="outline-secondary" 
+              onClick={() => navigate(-1)} 
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
               className="mb-4 back-button"
             >
               <FaArrowLeft className="me-2" /> Back
             </Button>
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
             <Card className="auth-card">
               <Card.Body className="p-4 p-md-5">
                 <div className="auth-header mb-4">

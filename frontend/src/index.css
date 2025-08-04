@@ -58,6 +58,7 @@
 }
 
 /* Featured Cars */
+<<<<<<< HEAD
 /* Featured Cars Section */
 .featured-cars {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -122,6 +123,116 @@
 
 .dark-mode .car-card .text-muted {
   color: #a0aec0 !important;
+=======
+.featured-cars {
+  background-color: var(--light-color);
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.car-card {
+  border: none;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
+}
+
+.car-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.car-image-wrapper {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.car-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.car-card:hover .car-image {
+  transform: scale(1.05);
+}
+
+.car-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.car-badge span {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.car-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.car-specs {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+.car-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+}
+
+.car-features {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+.car-features span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.car-view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.car-view-btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 }
 
 /* Services Section */
@@ -2982,6 +3093,7 @@
   .faq-answer {
     padding: 1rem;
   }
+<<<<<<< HEAD
 }
 
 
@@ -3080,4 +3192,6 @@
 
 .dark-mode .section-subtitle {
   color: #a0aec0;
+=======
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 }

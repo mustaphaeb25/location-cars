@@ -82,10 +82,15 @@ import React, { useEffect } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+<<<<<<< HEAD
 import { useTheme } from '../contexts/ThemeContext';
 import { FaCar, FaClipboardList, FaChartLine, FaEnvelope, FaUserCog, FaCog } from 'react-icons/fa';
 import { MdOutlineAnalytics, MdOutlineContactSupport } from 'react-icons/md';
 import './AdminDashboardPage.css';
+=======
+import { FaCar, FaClipboardList, FaChartLine, FaEnvelope } from 'react-icons/fa';
+
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
 const AdminDashboardPage = () => {
   const { user, isAuthenticated, isAdmin, loading: authLoading } = useAuth();
@@ -117,6 +122,7 @@ const AdminDashboardPage = () => {
     return null;
   }
 
+<<<<<<< HEAD
   const dashboardCards = [
     {
       icon: <FaCar size={40} />,
@@ -209,6 +215,60 @@ const AdminDashboardPage = () => {
         </Row>
       </Container>
     </div>
+=======
+  return (
+    <Container className="my-5 fade-in">
+      <h1 className="text-center mb-4">Admin Dashboard</h1>
+      <p className="text-center text-muted">
+        Welcome, {user ? `${user.nom} (${user.email})` : 'Guest'}!
+      </p>
+      <Row xs={1} md={2} lg={3} className="g-4 mt-4">
+        <Col>
+          <Card className="h-100 shadow-sm hover-grow text-center">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <FaCar size={60} className="text-primary mb-3" />
+              <Card.Title className="h4">Manage Cars</Card.Title>
+              <Card.Text>Add, edit, or delete car listings.</Card.Text>
+              <Button as={Link} to="/admin/manage-cars" variant="primary" className="mt-auto">Go to Cars</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="h-100 shadow-sm hover-grow text-center">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <FaClipboardList size={60} className="text-success mb-3" />
+              <Card.Title className="h4">Manage Reservations</Card.Title>
+              <Card.Text>View, approve, or reject car reservations.</Card.Text>
+              <Button as={Link} to="/admin/manage-reservations" variant="success" className="mt-auto">Go to Reservations</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col>
+          <Card className="h-100 shadow-sm hover-grow text-center">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <FaEnvelope size={60} className="text-warning mb-3" />
+              <Card.Title className="h4">Contact Messages</Card.Title>
+              <Card.Text>Review inquiries from your contact form.</Card.Text>
+              <Button as={Link} to="/admin/messages" variant="warning" className="mt-auto">View Messages</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+
+        <Col>
+          <Card className="h-100 shadow-sm hover-grow text-center">
+            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+              <FaChartLine size={60} className="text-info mb-3" />
+              <Card.Title className="h4">Reports & Analytics</Card.Title>
+              <Card.Text>View platform statistics and reports (Future Feature).</Card.Text>
+              <Button variant="info" disabled className="mt-auto">Coming Soon</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+
+      </Row>
+
+    </Container>
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
   );
 };
 

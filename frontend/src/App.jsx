@@ -44,7 +44,11 @@
 //     const hasRequiredRole = 
 //       (allowedRoles.includes('admin') && isAdmin) ||
 //       (allowedRoles.includes('client') && !isAdmin);
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //     if (!hasRequiredRole) {
 //       return <Navigate to="/" replace />;
 //     }
@@ -55,7 +59,11 @@
 
 // function App() {
 //   return (
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //       <ThemeProvider>
 //         <AuthProvider>
 //           <Navbar />
@@ -91,6 +99,7 @@
 //               {/* Catch-all for 404 Not Found (Optional) */}
 //               <Route path="*" element={<h1 className="text-center my-5">404 - Page Not Found</h1>} />
 //             </Routes>
+<<<<<<< HEAD
 
 //           </main>
 //           <Footer/>
@@ -99,6 +108,16 @@
 //         </AuthProvider>
 //       </ThemeProvider>
 
+=======
+            
+//           </main>
+//           <Footer/>
+          
+        
+//         </AuthProvider>
+//       </ThemeProvider>
+    
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //   );
 // }
 
@@ -129,13 +148,20 @@ import ContactPage from './pages/ContactPage';
 import AdminContactMessagesPage from './pages/AdminContactMessagesPage';
 import AboutUsPage from './pages/AboutUsPage';
 import FAQsPage from './pages/FAQsPage';
+<<<<<<< HEAD
 import AnalyticsPage from './pages/AnalyticsPage';
+=======
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 // import BlogPage from './pages/BlogPage';
 // import BlogPostPage from './pages/BlogPostPage';
 
 // ProtectedRoute component to guard routes (this part is correct)
 const ProtectedRoute = ({ children, allowedRoles }) => {
+<<<<<<< HEAD
   const { isAuthenticated, isAdmin, loading, user } = useAuth();
+=======
+  const { isAuthenticated, isAdmin, loading,user  } = useAuth();
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
   console.log("ProtectedRoute Status Check:");
   console.log("  - loading:", loading);
   console.log("  - isAuthenticated:", isAuthenticated);
@@ -167,6 +193,25 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 
 function App() {
   return (
+<<<<<<< HEAD
+=======
+
+      <ThemeProvider>
+        <AuthProvider>
+          <Navbar />
+          <main style={{ flexGrow: 1 }}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/cars" element={<CarListingPage />} />
+              <Route path="/cars/:id" element={<CarDetailPage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/about" element={<AboutUsPage />} />
+              <Route path="/faqs" element={<FAQsPage />} /> 
+              {/* <Route path="/blog" element={<BlogPage/>} /> 
+              <Route path="/blog/:slug" element={<BlogPostPage/>} /> */}
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
     <ThemeProvider>
       <AuthProvider>
@@ -184,6 +229,7 @@ function App() {
             {/* <Route path="/blog" element={<BlogPage/>} /> 
               <Route path="/blog/:slug" element={<BlogPostPage/>} /> */}
 
+<<<<<<< HEAD
             {/* Authenticated User Routes */}
             <Route element={<ProtectedRoute allowedRoles={['client', 'admin']} />}>
               <Route path="/my-reservations" element={<MyReservationsPage />} />
@@ -224,6 +270,34 @@ function App() {
       </AuthProvider>
     </ThemeProvider>
 
+=======
+              {/* Admin Routes */}
+              <Route element={<ProtectedRoute allowedRoles={['admin']} />}>
+                <Route path="/admin" element={<AdminDashboardPage />} />
+                <Route
+                  path="/admin/messages"
+                  element={
+                    <ProtectedRoute allowedRoles={['admin']}> {/* <-- CORRECTED LINE */}
+                      <AdminContactMessagesPage />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route path="/admin/manage-cars" element={<ManageCarsPage />} />
+                <Route path="/admin/manage-reservations" element={<ManageReservationsPage />} />
+              </Route>
+
+              {/* Catch-all for 404 Not Found (Optional) */}
+              <Route path="*" element={<h1 className="text-center my-5">404 - Page Not Found</h1>} />
+            </Routes>
+
+          </main>
+          <Footer/>
+
+
+        </AuthProvider>
+      </ThemeProvider>
+
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
   );
 }
 

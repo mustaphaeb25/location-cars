@@ -1,3 +1,115 @@
+<<<<<<< HEAD
+=======
+// import React from 'react';
+// import { Container, Row, Col, Image, Card } from 'react-bootstrap';
+// import { FaCar, FaUsers, FaHandshake, FaGlobe } from 'react-icons/fa'; // Icons for values/mission
+// import teamMeetingImg from '../assets/Vehicle.jpeg';
+// import customerServiceImg from '../assets/car.jpeg';
+
+// const AboutUsPage = () => {
+//     return (
+//         <Container className="my-5 fade-in">
+//             <h1 className="text-center mb-4">About LuxDrive Car Rental</h1>
+//             <p className="lead text-center mb-5 text-muted">
+//                 Your trusted partner for hassle-free and reliable car rentals.
+//             </p>
+
+//             {/* Company Story Section */}
+//             <Row className="mb-5 align-items-center">
+//                 <Col md={6}>
+//                     <h2 className="mb-3">Our Story</h2>
+//                     <p>
+//                         Founded in [Year], LuxDrive Car Rental began with a simple vision: to provide a seamless and enjoyable car rental experience for everyone, from daily commuters to adventurous travelers. We started with a small fleet and a big dream, growing steadily by focusing on customer satisfaction and quality service.
+//                     </p>
+//                     <p>
+//                         Over the years, we've expanded our fleet, embraced technology, and built a team passionate about helping you explore the world, one journey at a time. We believe that renting a car should be as exciting and stress-free as the destination itself.
+//                     </p>
+//                 </Col>
+//                 <Col md={6} className="text-center">
+//                     {/* Replace with an actual image of your team, office, or a symbolic image */}
+//                     <Image
+//                         src={teamMeetingImg}
+//                         alt="Our team meeting"
+//                         fluid
+//                         rounded
+//                         className="shadow-lg"
+//                         width={240}
+//                         height={240}
+//                     />
+//                 </Col>
+//             </Row>
+
+//             {/* Our Mission and Values Section */}
+//             <div className="bg-light py-5 mb-5 rounded">
+//                 <Container>
+//                     <h2 className="text-center mb-5">Our Mission & Values</h2>
+//                     <Row className="text-center g-4">
+//                         <Col md={4}>
+//                             <Card className="h-100 p-3 shadow-sm hover-grow">
+//                                 <Card.Body>
+//                                     <FaGlobe size={50} className="text-primary mb-3" />
+//                                     <Card.Title>Seamless Journeys</Card.Title>
+//                                     <Card.Text>
+//                                         To provide reliable, high-quality vehicles and exceptional service that make every journey effortless and memorable.
+//                                     </Card.Text>
+//                                 </Card.Body>
+//                             </Card>
+//                         </Col>
+//                         <Col md={4}>
+//                             <Card className="h-100 p-3 shadow-sm hover-grow">
+//                                 <Card.Body>
+//                                     <FaHandshake size={50} className="text-success mb-3" />
+//                                     <Card.Title>Customer First</Card.Title>
+//                                     <Card.Text>
+//                                         We prioritize our customers' needs, ensuring transparency, fairness, and a personalized experience every step of the the way.
+//                                     </Card.Text>
+//                                 </Card.Body>
+//                             </Card>
+//                         </Col>
+//                         <Col md={4}>
+//                             <Card className="h-100 p-3 shadow-sm hover-grow">
+//                                 <Card.Body>
+//                                     <FaCar size={50} className="text-info mb-3" />
+//                                     <Card.Title>Quality & Safety</Card.Title>
+//                                     <Card.Text>
+//                                         Maintaining a modern, diverse fleet and adhering to the highest standards of vehicle maintenance and safety checks.
+//                                     </Card.Text>
+//                                 </Card.Body>
+//                             </Card>
+//                         </Col>
+//                     </Row>
+//                 </Container>
+//             </div>
+
+//             {/* Why Choose Us (reiteration or focus on unique selling points) */}
+//             <Row className="mb-5 align-items-center">
+//                 <Col md={6} className="text-center">
+//                     {/* Replace with an image representing quality, service, or a diverse fleet */}
+//                     <Image
+//                         src={customerServiceImg}
+//                         alt="Customer service"
+//                         fluid
+//                         rounded
+//                         className="shadow-lg"
+//                     />
+//                 </Col>
+//                 <Col md={6}>
+//                     <h2 className="mb-3">Why Choose LuxDrive?</h2>
+//                     <p>
+//                         At LuxDrive, we don't just rent cars; we provide solutions for your mobility needs. With transparent pricing, flexible booking options, and a commitment to cleanliness and maintenance, we ensure you can hit the road with confidence. Our diverse fleet caters to all preferences, from compact cars for city adventures to spacious SUVs for family trips.
+//                     </p>
+//                     <p>
+//                         Experience the difference with a team that cares about your journey as much as you do.
+//                     </p>
+//                 </Col>
+//             </Row>
+
+//         </Container>
+//     );
+// };
+
+// export default AboutUsPage;
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
 import React, { useEffect } from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';

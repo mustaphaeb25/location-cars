@@ -1,4 +1,5 @@
 // import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 // import { Container, Row, Col, Button, Card, Image ,Carousel} from 'react-bootstrap';
 // import { getCars } from '../services/api';
 // import LoadingSpinner from '../components/LoadingSpinner';
@@ -7,26 +8,49 @@
 // import { useTheme } from '../contexts/ThemeContext';
 
 // // Client images
+=======
+// import { Container, Row, Col, Carousel, Button, Card, Image } from 'react-bootstrap';
+// import { getCars } from '../services/api';
+// import LoadingSpinner from '../components/LoadingSpinner';
+// import { Link } from 'react-router-dom';
+// import { FaCar, FaUsers, FaCheckCircle } from 'react-icons/fa'; // FaQuoteLeft removed as it's not used in this version
+
+// // Make sure these paths are correct based on your asset structure (e.g., '../assets/client-1.jpg' or '../assets/images/clients/client-1.jpg')
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 // import fatimaImage from '../assets/client-1.jpg';
 // import ahmedImage from '../assets/client-2.jpg';
 // import saraImage from '../assets/client-3.jpg';
 // import youssefImage from '../assets/client-4.jpg';
 // import lailaImage from '../assets/client-5.jpg';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 // const HomePage = () => {
 //   const [cars, setCars] = useState([]);
 //   const [loadingCars, setLoadingCars] = useState(true);
 //   const [errorCars, setErrorCars] = useState(null);
+<<<<<<< HEAD
 //   const [homepageTestimonials, setHomepageTestimonials] = useState([]);
 //   const [loadingTestimonials, setLoadingTestimonials] = useState(true);
 //   const { darkMode } = useTheme();
+=======
+
+//   const [homepageTestimonials, setHomepageTestimonials] = useState([]);
+//   const [loadingTestimonials, setLoadingTestimonials] = useState(true);
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 
 //   useEffect(() => {
 //     const fetchCars = async () => {
 //       try {
 //         setLoadingCars(true);
 //         const response = await getCars();
+<<<<<<< HEAD
 //         setCars(response.data.filter(car => car.statut === 'disponible').slice(0, 6));
+=======
+//         setCars(response.data.filter(car => car.statut === 'disponible').slice(0, 3));
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //         setLoadingCars(false);
 //       } catch (err) {
 //         setErrorCars("Failed to fetch cars for homepage. Please try again later.");
@@ -42,7 +66,10 @@
 //       try {
 //         setLoadingTestimonials(true);
 //         const dummyData = [
+<<<<<<< HEAD
 //           // ... (keep your existing testimonial data)
+=======
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //           {
 //             id: 1,
 //             name: "Fatima Z.",
@@ -96,10 +123,15 @@
 //         setLoadingTestimonials(false);
 //       }
 //     };
+<<<<<<< HEAD
+=======
+
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //     fetchHomepageTestimonials();
 //   }, []);
 
 //   return (
+<<<<<<< HEAD
 //     <div className={`home-page ${darkMode ? 'dark-mode' : ''}`}>
 //       {/* Hero Section */}
 //       <section className="hero-section">
@@ -329,13 +361,147 @@
 //         </Container>
 //       </section>
 //     </div>
+=======
+//     <>
+//       {/* Hero Section */}
+//       <div className="bg-primary text-white text-center py-5">
+//         <Container className="fade-in">
+//           <h1 className="display-4 mb-3">Your Journey Starts Here</h1>
+//           <p className="lead mb-4">Discover the perfect car for your next adventure.</p>
+//           <Button as={Link} to="/cars" variant="light" size="lg">Browse Cars</Button>
+//         </Container>
+//       </div>
+
+//       {/* Car Carousel Section */}
+//       <Container className="my-5 fade-in">
+//         <h2 className="text-center mb-4">Featured Cars</h2>
+//         {loadingCars ? (
+//           <LoadingSpinner />
+//         ) : errorCars ? (
+//           <p className="text-center text-danger">{errorCars}</p>
+//         ) : cars.length === 0 ? (
+//           <p className="text-center">No featured cars available at the moment.</p>
+//         ) : (
+//           <Carousel indicators={false} controls={true} className="shadow-lg rounded" interval={3000}>
+//             {cars.map((car) => (
+//               <Carousel.Item key={car.id}>
+//                 <img
+//                   className="d-block w-100 rounded"
+//                   src={car.image_url ? `http://localhost:3000${car.image_url}` : 'https://via.placeholder.com/800x400?text=No+Image'}
+//                   alt={`${car.marque} ${car.modele}`}
+//                   style={{ height: '400px', objectFit: 'cover' }}
+//                 />
+//                 <Carousel.Caption className="bg-dark bg-opacity-75 p-3 rounded">
+//                   <h3>{car.marque} {car.modele}</h3>
+//                   <p>${car.prix_par_jour} / day</p>
+//                   <Button as={Link} to={`/cars/${car.id}`} variant="outline-light">View Details</Button>
+//                 </Carousel.Caption>
+//               </Carousel.Item>
+//             ))}
+//           </Carousel>
+//         )}
+//       </Container>
+
+//       {/* Services Section */}
+//       <Container className="my-5 fade-in">
+//         <h2 className="text-center mb-4">Why Choose Us?</h2>
+//         <Row className="text-center">
+//           <Col md={4} className="mb-4">
+//             <Card className="h-100 p-3 hover-grow">
+//               <Card.Body>
+//                 <FaCar size={50} className="text-primary mb-3" />
+//                 <Card.Title>Wide Selection</Card.Title>
+//                 <Card.Text>
+//                   Choose from a diverse fleet of vehicles to suit every need and budget.
+//                 </Card.Text>
+//               </Card.Body>
+//             </Card>
+//           </Col>
+//           <Col md={4} className="mb-4">
+//             <Card className="h-100 p-3 hover-grow">
+//               <Card.Body>
+//                 <FaCheckCircle size={50} className="text-primary mb-3" />
+//                 <Card.Title>Easy Booking</Card.Title>
+//                 <Card.Text>
+//                   Our intuitive platform makes booking your next rental quick and hassle-free.
+//                 </Card.Text>
+//               </Card.Body>
+//             </Card>
+//           </Col>
+//           <Col md={4} className="mb-4">
+//             <Card className="h-100 p-3 hover-grow">
+//               <Card.Body>
+//                 <FaUsers size={50} className="text-primary mb-3" />
+//                 <Card.Title>24/7 Support</Card.Title>
+//                 <Card.Text>
+//                   Our dedicated team is always ready to assist you, day or night.
+//                 </Card.Text>
+//               </Card.Body>
+//             </Card> {/* Corrected closing tag */}
+//           </Col>
+//         </Row>
+//       </Container>
+
+//       {/* Testimonials Carousel Section */}
+//      <section className="bg-light py-5">
+//         <Container className="fade-in">
+//           <h2 className="text-center mb-5">What Our Customers Say</h2>
+//           {loadingTestimonials ? (
+//             <p className="text-center">Loading testimonials...</p>
+//           ) : homepageTestimonials.length === 0 ? (
+//             <p className="text-center">No testimonials to display yet.</p>
+//           ) : (
+//             <>
+//               <Carousel indicators={true} controls={true} interval={5000} className="shadow-lg rounded">
+//                 {homepageTestimonials.map((testimonial) => (
+//                   <Carousel.Item key={testimonial.id}>
+//                     <div className="d-flex flex-column align-items-center text-center p-5">
+//                       {testimonial.imageUrl && (
+//                         <Image
+//                           src={testimonial.imageUrl}
+//                           alt={testimonial.name}
+//                           roundedCircle
+//                           className="mb-3"
+//                           style={{ width: '120px', height: '120px', objectFit: 'cover', border: '4px solid #007bff' }}
+//                         />
+//                       )}
+//                       <p className="lead font-italic mb-3">"{testimonial.comment}"</p>
+//                       <h4 className="mb-1">{testimonial.name}</h4>
+//                       <p className="text-muted mb-0">{testimonial.car}</p>
+//                       <div className="mb-2">
+//                         {'⭐'.repeat(testimonial.rating)}
+//                       </div>
+//                     </div>
+//                   </Carousel.Item>
+//                 ))}
+//               </Carousel>
+              
+//             </>
+//           )}
+//         </Container>
+//       </section>
+
+//       {/* Call to Action Section */}
+//       <div className="bg-secondary text-white text-center py-5">
+//         <Container className="fade-in">
+//           <h2 className="mb-3">Ready to find your perfect ride?</h2>
+//           <p className="lead mb-4">Start Browse our extensive collection of cars today!</p>
+//           <Button as={Link} to="/cars" variant="light" size="lg">View All Cars</Button>
+//         </Container>
+//       </div>
+//     </>
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 //   );
 // };
 
 // export default HomePage;
 
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import { Container, Row, Col, Button, Card, Image, Carousel } from 'react-bootstrap';
+=======
+import { Container, Row, Col, Button, Card, Image } from 'react-bootstrap';
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 import { getCars } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { Link } from 'react-router-dom';
@@ -378,6 +544,10 @@ const HomePage = () => {
       try {
         setLoadingTestimonials(true);
         const dummyData = [
+<<<<<<< HEAD
+=======
+          // ... (keep your existing testimonial data)
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
           {
             id: 1,
             name: "Fatima Z.",
@@ -437,6 +607,7 @@ const HomePage = () => {
   return (
     <div className={`home-page ${darkMode ? 'dark-mode' : ''}`}>
       {/* Hero Section */}
+<<<<<<< HEAD
       <section className="hero-section position-relative">
         <div className="hero-overlay position-absolute w-100 h-100"></div>
         <Container className="hero-content position-relative d-flex align-items-center min-vh-80 py-5">
@@ -448,6 +619,19 @@ const HomePage = () => {
                 Browse Fleet
               </Button>
               <Button as={Link} to="/about" variant="outline-light" size="lg" className="px-4 py-3">
+=======
+      <section className="hero-section">
+        <div className="hero-overlay"></div>
+        <Container className="hero-content">
+          <div className="hero-text">
+            <h1 className="hero-title">Premium Car Rentals</h1>
+            <p className="hero-subtitle">Experience luxury and performance with our exclusive fleet</p>
+            <div className="hero-buttons">
+              <Button as={Link} to="/cars" variant="primary" size="lg" className="mr-3">
+                Browse Fleet
+              </Button>
+              <Button as={Link} to="/about" variant="outline-light" size="lg">
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
                 Learn More
               </Button>
             </div>
@@ -456,6 +640,7 @@ const HomePage = () => {
       </section>
 
       {/* Featured Cars Section */}
+<<<<<<< HEAD
       {/* Featured Cars Section */}
 <section className={`featured-cars py-6 ${darkMode ? 'bg-dark' : 'bg-light'}`}>
   <Container>
@@ -553,10 +738,86 @@ const HomePage = () => {
           <div className="section-header text-center mb-5">
             <h2 className={`section-title display-5 fw-bold mb-3 ${darkMode ? 'text-white' : ''}`}>Why Choose LuxDrive</h2>
             <p className={`section-subtitle lead ${darkMode ? 'text-light' : 'text-muted'}`}>Premium service at every step of your journey</p>
+=======
+      <section className="featured-cars py-5">
+        <Container>
+          <div className="section-header text-center mb-5">
+            <h2 className="section-title">Our Featured Vehicles</h2>
+            <p className="section-subtitle">Select from our premium collection</p>
+          </div>
+          
+          {loadingCars ? (
+            <LoadingSpinner />
+          ) : errorCars ? (
+            <p className="text-center text-danger">{errorCars}</p>
+          ) : cars.length === 0 ? (
+            <p className="text-center">No featured cars available at the moment.</p>
+          ) : (
+            <Row className="g-4">
+              {cars.map((car) => (
+                <Col key={car.id} lg={4} md={6}>
+                  <Card className="car-card h-100">
+                    <div className="car-image-wrapper">
+                      <Image
+                        src={car.image_url ? `http://localhost:3000${car.image_url}` : 'https://via.placeholder.com/800x400?text=No+Image'}
+                        alt={`${car.marque} ${car.modele}`}
+                        fluid
+                        className="car-image"
+                      />
+                      <div className="car-badge">${car.prix_par_jour}<span>/day</span></div>
+                    </div>
+                    <Card.Body>
+                      <div className="d-flex justify-content-between align-items-start mb-2">
+                        <div>
+                          <h3 className="car-title">{car.marque} {car.modele}</h3>
+                          <p className="car-specs">{car.annee} • {car.type_carburant}</p>
+                        </div>
+                        <div className="car-rating">
+                          <FaStar className="text-warning" /> 4.8
+                        </div>
+                      </div>
+                      <div className="car-features">
+                        <span><FaCar /> {car.type_vehicule}</span>
+                        <span>{car.nombre_places} Seats</span>
+                        <span>{car.boite_vitesse}</span>
+                      </div>
+                    </Card.Body>
+                    <Card.Footer className="bg-transparent border-top-0">
+                      <Button 
+                        as={Link} 
+                        to={`/cars/${car.id}`} 
+                        variant="outline-primary" 
+                        className="w-100 car-view-btn"
+                      >
+                        View Details <FaArrowRight className="ms-2" />
+                      </Button>
+                    </Card.Footer>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          )}
+          
+          <div className="text-center mt-5">
+            <Button as={Link} to="/cars" variant="primary" size="lg">
+              View All Vehicles
+            </Button>
+          </div>
+        </Container>
+      </section>
+
+      {/* Services Section */}
+      <section className="services-section py-5">
+        <Container>
+          <div className="section-header text-center mb-5">
+            <h2 className="section-title">Why Choose LuxDrive</h2>
+            <p className="section-subtitle">Premium service at every step</p>
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
           </div>
           
           <Row className="g-4">
             <Col md={4}>
+<<<<<<< HEAD
               <Card className={`service-card h-100 border-0 shadow-sm ${darkMode ? 'bg-dark text-white' : ''}`}>
                 <Card.Body className="text-center p-4">
                   <div className="service-icon bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '80px', height: '80px' }}>
@@ -564,6 +825,15 @@ const HomePage = () => {
                   </div>
                   <h3 className="service-title h4 fw-bold mb-3">Diverse Fleet</h3>
                   <p className="service-text mb-0">
+=======
+              <Card className="service-card h-100">
+                <Card.Body className="text-center">
+                  <div className="service-icon">
+                    <FaCar size={40} />
+                  </div>
+                  <h3 className="service-title">Diverse Fleet</h3>
+                  <p className="service-text">
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
                     From economy to luxury, our extensive selection ensures you'll find the perfect vehicle for any occasion.
                   </p>
                 </Card.Body>
@@ -571,6 +841,7 @@ const HomePage = () => {
             </Col>
             
             <Col md={4}>
+<<<<<<< HEAD
               <Card className={`service-card h-100 border-0 shadow-sm ${darkMode ? 'bg-dark text-white' : ''}`}>
                 <Card.Body className="text-center p-4">
                   <div className="service-icon bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '80px', height: '80px' }}>
@@ -579,12 +850,23 @@ const HomePage = () => {
                   <h3 className="service-title h4 fw-bold mb-3">Hassle-Free Booking</h3>
                   <p className="service-text mb-0">
                     Our streamlined process gets you behind the wheel quickly with minimal paperwork and maximum convenience.
+=======
+              <Card className="service-card h-100">
+                <Card.Body className="text-center">
+                  <div className="service-icon">
+                    <FaCheckCircle size={40} />
+                  </div>
+                  <h3 className="service-title">Hassle-Free Booking</h3>
+                  <p className="service-text">
+                    Our streamlined process gets you behind the wheel quickly with minimal paperwork.
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
                   </p>
                 </Card.Body>
               </Card>
             </Col>
             
             <Col md={4}>
+<<<<<<< HEAD
               <Card className={`service-card h-100 border-0 shadow-sm ${darkMode ? 'bg-dark text-white' : ''}`}>
                 <Card.Body className="text-center p-4">
                   <div className="service-icon bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-4" style={{ width: '80px', height: '80px' }}>
@@ -593,6 +875,16 @@ const HomePage = () => {
                   <h3 className="service-title h4 fw-bold mb-3">24/7 Support</h3>
                   <p className="service-text mb-0">
                     Our dedicated team is available around the clock to assist with any needs during your rental period.
+=======
+              <Card className="service-card h-100">
+                <Card.Body className="text-center">
+                  <div className="service-icon">
+                    <FaUsers size={40} />
+                  </div>
+                  <h3 className="service-title">24/7 Support</h3>
+                  <p className="service-text">
+                    Our dedicated team is available around the clock to assist with any needs during your rental.
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
                   </p>
                 </Card.Body>
               </Card>
@@ -602,6 +894,7 @@ const HomePage = () => {
       </section>
 
       {/* Testimonials Section */}
+<<<<<<< HEAD
       {/* Testimonials Section */}
 <section className={`testimonials-section py-6 ${darkMode ? 'bg-dark' : 'bg-light'}`}>
   <Container>
@@ -692,6 +985,69 @@ const HomePage = () => {
               Reserve Now
             </Button>
             <Button as={Link} to="/contact" variant={darkMode ? "outline-light" : "outline-light"} size="lg" className="px-5 py-3">
+=======
+      <section className="testimonials-section py-5">
+        <Container>
+          <div className="section-header text-center mb-5">
+            <h2 className="section-title">Client Experiences</h2>
+            <p className="section-subtitle">What our customers say about us</p>
+          </div>
+          
+          {loadingTestimonials ? (
+            <p className="text-center">Loading testimonials...</p>
+          ) : homepageTestimonials.length === 0 ? (
+            <p className="text-center">No testimonials to display yet.</p>
+          ) : (
+            <Row className="g-4">
+              {homepageTestimonials.slice(0, 3).map((testimonial) => (
+                <Col key={testimonial.id} lg={4} md={6}>
+                  <Card className="testimonial-card h-100">
+                    <Card.Body className="text-center">
+                      <div className="testimonial-image-wrapper">
+                        <Image
+                          src={testimonial.imageUrl}
+                          alt={testimonial.name}
+                          roundedCircle
+                          className="testimonial-image"
+                        />
+                      </div>
+                      <div className="testimonial-rating mb-3">
+                        {[...Array(5)].map((_, i) => (
+                          <FaStar 
+                            key={i} 
+                            className={i < testimonial.rating ? "text-warning" : "text-muted"} 
+                          />
+                        ))}
+                      </div>
+                      <blockquote className="testimonial-quote">
+                        "{testimonial.comment}"
+                      </blockquote>
+                      <div className="testimonial-author">
+                        <h4 className="mb-1">{testimonial.name}</h4>
+                        <p className="text-muted mb-0">{testimonial.car}</p>
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          )}
+        </Container>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section py-5">
+        <Container className="text-center">
+          <h2 className="cta-title mb-4">Ready for Your Next Adventure?</h2>
+          <p className="cta-text mb-5">
+            Join thousands of satisfied customers who've experienced the LuxDrive difference.
+          </p>
+          <div className="cta-buttons">
+            <Button as={Link} to="/cars" variant="primary" size="lg" className="me-3">
+              Reserve Now
+            </Button>
+            <Button as={Link} to="/contact" variant="outline-light" size="lg">
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
               Contact Us
             </Button>
           </div>

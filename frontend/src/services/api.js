@@ -41,6 +41,7 @@ export const deleteCar = (id) => api.delete(`/cars/${id}`);
 // Reservations - CORRECTED ENDPOINTS
 export const createReservation = (reservationData) => 
   api.post('/reservations', reservationData); 
+<<<<<<< HEAD
 
 export const updateReservationStatus = (reservationId, newStatus) => 
   // FIX: Change 'statut' key to 'newStatus' to match backend expectation
@@ -62,4 +63,19 @@ export const deleteContactMessage = async (messageId) => {
   }
 };
 
+=======
+
+export const updateReservationStatus = (reservationId, newStatus) => 
+  // FIX: Change 'statut' key to 'newStatus' to match backend expectation
+  api.put(`/reservations/${reservationId}/statut`, { newStatus: newStatus }); 
+
+export const getReservations = (userId) => 
+  userId ? api.get(`/reservations/user/${userId}`) : api.get('/reservations');
+
+
+// Contact
+export const getContactMessages = () => api.get('/contact');
+export const sendContactMessage = (messageData) => api.post('/contact', messageData);
+
+>>>>>>> 501744de934533a45971193d0c974f2265742b3c
 export default api;
